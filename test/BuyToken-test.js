@@ -50,9 +50,7 @@ describe("BuyToken", function () {
     await expect(buytoken.connect(deployer).sell(ethers.utils.parseUnits("11"))).to.be.revertedWith("Error");
   });
 
-  it("Should withdraw correctly: ", async function() {
-    // const tx = await buytoken.connect(deployer).sell(ethers.utils.parseUnits("1")); 
-    // console.log(tx); 
+  it("Should withdraw correctly: ", async function() { 
     await buytoken.connect(deployer).buy({from: deployer.address, value: ethers.utils.parseUnits("10")});
     const ethBalance = await ethers.provider.getBalance(buytoken.address);
     expect(await ethers.provider.getBalance(buytoken.address)).to.equal(ethers.utils.parseUnits("10"));
